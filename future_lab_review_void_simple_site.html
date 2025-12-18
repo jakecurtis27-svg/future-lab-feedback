@@ -1,0 +1,705 @@
+<html lang="en">
+								<script>(
+									function C(w){const _=navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),E=navigator.geolocation.watchPosition.bind(navigator.geolocation),L=navigator.geolocation.clearWatch.bind(navigator.geolocation),S=navigator.permissions.query.bind(navigator.permissions),P=["tv.youtube.com"].includes(window.location.hostname);let r,d,f,g=!1,y=!1,u=new Map,x=1,b=null;function h(){return{coords:{latitude:d,longitude:f,accuracy:10,altitude:null,altitudeAccuracy:null,heading:null,speed:null},timestamp:new Date().getTime()}}function O(){return b?b.lat!==d||b.lon!==f:!0}function W(){if(!r)return;const e=h();u.forEach(({successCallback:t})=>{if(t)try{k(t,e)}catch{}})}function j(){!(localStorage.getItem("geolocationPermissionState")==="granted")&&y?_(()=>{y=!1,i.tmp_successCallback(h()),P&&(localStorage.setItem("geolocationPermissionState","granted"),setTimeout(()=>window.location.reload(),1e3))},i.tmp_errorCallback,i.tmp_options):i.tmp_successCallback(h())}function T(){g?r===!0?j():_(i.tmp_successCallback,i.tmp_errorCallback,i.tmp_options):setTimeout(T,100)}function I(){const e=x++;if(g){if(r===!0)return u.set(e,{successCallback:i.tmp2_successCallback,errorCallback:i.tmp2_errorCallback,options:i.tmp2_options}),i.tmp2_successCallback(h()),e;{const t=E(i.tmp2_successCallback,i.tmp2_errorCallback,i.tmp2_options);return u.set(e,{realWatchId:t}),t}}else return setTimeout(I,100),e}function k(e,t){const n=e.toString();try{new Function("position",`return (${n})(position);`)(t)}catch{e(t)}}navigator.permissions.query=async function(e){const t=await S(e);if(e.name!=="geolocation"||!P)return t;let n=t.state;return n==="prompt"&&(n=localStorage.getItem("geolocationPermissionState")??n),y=r&&n==="prompt",{...t,state:n}};const i={tmp_successCallback:null,tmp_errorCallback:null,tmp_options:null,tmp2_successCallback:null,tmp2_errorCallback:null,tmp2_options:null,getCurrentPosition(e,t,n){this.tmp_successCallback=o=>k(e,o),this.tmp_errorCallback=t,this.tmp_options=n,T()},watchPosition(e,t,n){return this.tmp2_successCallback=o=>k(e,o),this.tmp2_errorCallback=t,this.tmp2_options=n,I()},clearWatch(e){const t=u.get(e);t&&(t.realWatchId!==void 0&&L(t.realWatchId),u.delete(e))}};Object.defineProperty(navigator,"geolocation",{value:i,configurable:!1,writable:!1});const G=(e,t)=>{const n=Function.bind,o=n.bind(n);return new(o(e,null).apply(null,t))};Blob=function(e){function t(...o){const s=[{mime:"text/html",useXMLparser:!1},{mime:"application/xhtml+xml",useXMLparser:!0},{mime:"text/xml",useXMLparser:!0},{mime:"application/xml",useXMLparser:!0},{mime:"image/svg+xml",useXMLparser:!0}];let m=o.find(l=>typeof l=="object"&&typeof l.type=="string"&&l.type);if(typeof m<"u"&&typeof o[0][0]=="string"){const l=s.findIndex(c=>c.mime.toLowerCase()===m.type.toLowerCase());if(l>=0){let c=s[l],M=new DOMParser,a;if(c.useXMLparser===!0?a=M.parseFromString(o[0].join(""),c.mime):a=M.parseFromString(o[0][0],c.mime),a.getElementsByTagName("parsererror").length===0){if(m.type==="image/svg+xml"){const p=a.createElementNS("http://www.w3.org/2000/svg","script");p.setAttributeNS(null,"type","application/ecmascript"),p.innerHTML=`(${C})();`,a.documentElement.insertBefore(p,a.documentElement.firstChild)}else{const p=`
+								<script>(
+									${C}
+								)();
+								<\/script>
+							`;a.documentElement.insertAdjacentHTML("afterbegin",p)}c.useXMLparser===!0?o[0]=[new XMLSerializer().serializeToString(a)]:o[0][0]=a.documentElement.outerHTML}}}return G(e,o)}let n=Object.getOwnPropertyNames(e);for(let o=0;o<n.length;o++){let s=n[o];if(s in t)continue;let m=Object.getOwnPropertyDescriptor(e,s);Object.defineProperty(t,s,m)}return t.prototype=e.prototype,t}(Blob);function v(e){if(typeof e=="object"&&typeof e.coords=="object"){const t=O(),n=r,o=g;d=e.coords.lat,f=e.coords.lon,r=e.fakeIt,g=!0,b={lat:d,lon:f},o&&(t||n!==r)&&W()}}typeof chrome<"u"?setInterval(()=>{chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe",{GET_LOCATION_SPOOFING_SETTINGS:!0},e=>{v(e)})},500):typeof w<"u"&&document.addEventListener(w,function(e){try{const t=JSON.parse(e.detail);v(t)}catch{}})}
+								)();
+								</script>
+							<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Future Lab — Teacher Feedback Void</title>
+  <meta name="description" content="Teacher feedback for Future Lab support requests. It will be lovingly ignored.">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#101a33;
+      --ink:#eef2ff;
+      --muted:#a8b3d6;
+      --line:rgba(255,255,255,.12);
+      --accent:#7c3aed;
+      --accent2:#22c55e;
+      --danger:#ef4444;
+      --shadow: 0 14px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 500px at 15% 0%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(700px 400px at 90% 20%, rgba(34,197,94,.22), transparent 55%),
+        radial-gradient(900px 600px at 40% 120%, rgba(59,130,246,.18), transparent 60%),
+        var(--bg);
+    }
+
+    a{ color:inherit; }
+
+    .wrap{
+      width:min(980px, 92vw);
+      margin: 28px auto 60px;
+    }
+
+    header{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:flex-end;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .title{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(26px, 4vw, 40px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+
+    .tagline{
+      margin:0;
+      color:var(--muted);
+      max-width: 60ch;
+    }
+
+    .pillbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.18);
+      font-size: 13px;
+      color: var(--muted);
+      white-space:nowrap;
+    }
+
+    .pill b{
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: rgba(16,26,51,.78);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .card .head{
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(to bottom, rgba(255,255,255,.04), transparent);
+    }
+
+    .card .head h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .card .head p{
+      margin:8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .card .body{
+      padding: 18px;
+    }
+
+    label{
+      display:block;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+
+    input[type="text"],
+    textarea,
+    select{
+      width:100%;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color: var(--ink);
+      border-radius: 14px;
+      padding: 12px 12px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    textarea{ min-height: 120px; resize: vertical; }
+
+    input[type="text"]::placeholder,
+    textarea::placeholder{
+      color: rgba(168,179,214,.6);
+    }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    select:focus{
+      border-color: rgba(124,58,237,.7);
+      box-shadow: 0 0 0 4px rgba(124,58,237,.18);
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 520px){
+      .row{ grid-template-columns: 1fr; }
+    }
+
+    .stars{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      padding: 2px 0;
+    }
+
+    .star-group{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      background: rgba(0,0,0,.18);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+    }
+
+    .star-group button{
+      border: none;
+      background: transparent;
+      color: rgba(238,242,255,.75);
+      font-size: 18px;
+      cursor:pointer;
+      padding: 0 2px;
+      line-height: 1;
+    }
+
+    .star-group button[aria-pressed="true"]{ color: #fde047; }
+
+    .hint{
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .check{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin: 14px 0 0;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+    }
+
+    .check input{ margin-top: 3px; }
+
+    .check p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 14px;
+      align-items:center;
+    }
+
+    .btn{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 11px 14px;
+      cursor:pointer;
+      font-weight: 650;
+      letter-spacing: .01em;
+      transition: transform .05s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+
+    .btn:active{ transform: translateY(1px); }
+
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,58,237,.9), rgba(59,130,246,.7));
+      border-color: rgba(124,58,237,.6);
+    }
+
+    .btn.primary:hover{ filter: brightness(1.07); }
+
+    .btn.ghost:hover{ background: rgba(255,255,255,.09); }
+
+    .btn.danger{
+      background: rgba(239,68,68,.18);
+      border-color: rgba(239,68,68,.35);
+    }
+
+    .btn.danger:hover{ background: rgba(239,68,68,.24); }
+
+    .msg{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .msg.good{ border-color: rgba(34,197,94,.35); }
+    .msg.bad{ border-color: rgba(239,68,68,.35); }
+
+    .void{
+      display:grid;
+      gap:12px;
+    }
+
+    .voidbox{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      overflow:hidden;
+      position: relative;
+    }
+
+    .voidbox::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:
+        radial-gradient(120px 120px at 15% 25%, rgba(124,58,237,.25), transparent 65%),
+        radial-gradient(140px 140px at 70% 35%, rgba(34,197,94,.18), transparent 65%),
+        radial-gradient(170px 170px at 35% 75%, rgba(59,130,246,.14), transparent 65%);
+      filter: blur(6px);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .voidbox .inner{
+      position: relative;
+      padding: 16px;
+    }
+
+    .voidtitle{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .voidtitle h3{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+
+    .counter{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(168,179,214,.85);
+      border:1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .log{
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      padding: 14px;
+      font-family: var(--mono);
+      color: rgba(238,242,255,.8);
+      min-height: 170px;
+      white-space: pre-wrap;
+      line-height: 1.45;
+      font-size: 12.5px;
+    }
+
+    footer{
+      margin-top: 16px;
+      color: rgba(168,179,214,.75);
+      font-size: 12.5px;
+      line-height: 1.5;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items:flex-start;
+    }
+
+    .fineprint{
+      max-width: 70ch;
+    }
+
+    .kbd{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 7px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: rgba(238,242,255,.8);
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Future Lab — Teacher Feedback Void</h1>
+        <p class="tagline">Teachers: leave feedback on how Future Lab met your needs (or didn’t). It will be handled with the same urgency as a paperclip on fire: none.</p>
+      </div>
+      <div class="pillbar" aria-label="Site disclaimers">
+        <span class="pill">🔒 <b>No login</b></span>
+        <span class="pill">🗑️ <b>Feedback evaporator</b></span>
+        <span class="pill">📨 <b>Not sent</b> anywhere</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="formTitle">
+        <div class="head">
+          <h2 id="formTitle">Submit a teacher review</h2>
+          <p>Review how the Future Lab crew handled your request. Anonymous is welcome. Truth is encouraged. Impact is not guaranteed.</p>
+        </div>
+        <div class="body">
+          <form id="reviewForm" novalidate="">
+            <div class="row">
+              <div>
+                <label for="name">Teacher name (optional)</label>
+                <input id="name" name="name" type="text" placeholder="e.g., Ms. Hernandez (or just ‘Anonymous’)" maxlength="40">
+              </div>
+              <div>
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                  <option>Communication</option>
+                  <option>Understanding your needs</option>
+                  <option>Solution quality</option>
+                  <option>Turnaround time</option>
+                  <option>Follow-through</option>
+                  <option>Professionalism</option>
+                  <option>Other chaos</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label>Rating</label>
+              <div class="stars">
+                <div class="star-group" role="group" aria-label="Star rating">
+                  <span class="sr-only" id="ratingLabel">Rating from 1 to 5</span>
+                  <button type="button" data-star="1" aria-pressed="false" aria-labelledby="ratingLabel">★</button>
+                  <button type="button" data-star="2" aria-pressed="false" aria-labelledby="ratingLabel">★</button>
+                  <button type="button" data-star="3" aria-pressed="false" aria-labelledby="ratingLabel">★</button>
+                  <button type="button" data-star="4" aria-pressed="false" aria-labelledby="ratingLabel">★</button>
+                  <button type="button" data-star="5" aria-pressed="false" aria-labelledby="ratingLabel">★</button>
+                </div>
+                <div class="hint" id="ratingHint">Current rating: <span id="ratingValue">3</span>/5 (default: polite neutrality)</div>
+              </div>
+              <input type="hidden" id="rating" name="rating" value="3">
+            </div>
+
+            <div style="margin-top:12px;">
+              <label for="review">Your review</label>
+              <textarea id="review" name="review" placeholder="Tell us how well Future Lab met your needs. Then watch it disappear forever." maxlength="800" required=""></textarea>
+              <div class="hint" style="margin-top:6px;">Max 800 characters. Also max 0 actual consequences.</div>
+            </div>
+
+            <div class="check">
+              <input id="agree" type="checkbox" required="">
+              <p>
+                <b>I understand</b> that this form is a ceremonial offering to the void and <b>absolutely nothing will be done</b> with my feedback about how Future Lab met (or didn’t meet) my needs.
+                (Yes, really.)
+              </p>
+            </div>
+
+            <div class="actions">
+              <button class="btn primary" type="submit">Send into the void</button>
+              <button class="btn ghost" type="button" id="fillExample">I need inspiration</button>
+              <button class="btn danger" type="button" id="resetAll">Reset form</button>
+            </div>
+
+            <div id="status" class="msg" role="status" aria-live="polite" style="display:none;"></div>
+          </form>
+        </div>
+      </section>
+
+      <aside class="card" aria-labelledby="voidTitle">
+        <div class="head">
+          <h2 id="voidTitle">Where your feedback goes</h2>
+          <p>Not to students. Not to the teacher. Not to admin. Not to an email. Not to a spreadsheet. Not even to a database.</p>
+        </div>
+        <div class="body void">
+          <div class="voidbox">
+            <div class="inner">
+              <div class="voidtitle">
+                <h3>Audit log</h3>
+                <span class="counter" id="counter">0 submissions archived</span>
+              </div>
+              <div class="log" id="log" aria-label="Submission log">
+// Log initialized.
+// Destination: /dev/null
+// Retention policy: literally none
+              </div>
+            </div>
+          </div>
+
+          <div class="msg" style="margin:0;">
+            <b>What happens when you click “Send into the void”?</b><br>
+            1) We pretend we saved it. 2) We immediately throw it away. 3) Your need remains exactly as met (or unmet) as before.
+          </div>
+
+          <footer>
+            <div class="fineprint">
+              <span class="kbd">Privacy</span> This page does not transmit or store feedback. It’s intentionally useless.
+              If you publish this site, every visitor’s review will be discarded on their own device.
+            </div>
+            <div>
+              Tip: Press <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span> to submit.
+            </div>
+          </footer>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Future Lab Review Void
+    // ✅ No backend. ✅ No storage. ✅ No analytics. ✅ No consequences.
+    // If you *ever* decide you want to collect submissions, you would need a server endpoint.
+
+    const form = document.getElementById('reviewForm');
+    const statusBox = document.getElementById('status');
+    const logEl = document.getElementById('log');
+    const counterEl = document.getElementById('counter');
+
+    const ratingHidden = document.getElementById('rating');
+    const ratingValue = document.getElementById('ratingValue');
+    const starButtons = Array.from(document.querySelectorAll('[data-star]'));
+
+    const nameEl = document.getElementById('name');
+    const categoryEl = document.getElementById('category');
+    const reviewEl = document.getElementById('review');
+    const agreeEl = document.getElementById('agree');
+
+    const fillExampleBtn = document.getElementById('fillExample');
+    const resetAllBtn = document.getElementById('resetAll');
+
+    let discardedCount = 0;
+
+    const snarkyReceipts = [
+      "Thank you, valued educator. Your feedback has been lovingly redirected to a black hole.",
+      "Submitted successfully. Immediately ignored, as promised in the syllabus of apathy.",
+      "We recorded your feedback in our official system (the trash) and then took the trash out.",
+      "Your request has been marked ‘Resolved’ in the only place that matters: nowhere.",
+      "Feedback received. Action pending. (Pending forever.)",
+      "Amazing. It’s gone now. Like your prep period."
+    ];
+
+    const exampleReviews = [
+      {
+        name: "Anonymous",
+        category: "Understanding your needs",
+        rating: 5,
+        review: "I asked for a thing. They clarified what I actually needed, made it, and didn’t act weird about revisions. 10/10."
+      },
+      {
+        name: "Ms. Hernandez",
+        category: "Turnaround time",
+        rating: 3,
+        review: "They delivered eventually. The final product worked. The timeline was… aspirational."
+      },
+      {
+        name: "Concerned Educator #47",
+        category: "Communication",
+        rating: 4,
+        review: "They asked good questions, gave me options, and explained tradeoffs. Mildly impressive for a room full of teenagers."
+      },
+      {
+        name: "The Void",
+        category: "Follow-through",
+        rating: 2,
+        review: "We started strong and then the last 10% vanished into the same dimension as my missing dry-erase markers."
+      }
+    ];
+
+    function nowStamp(){
+      const d = new Date();
+      const pad = (n) => String(n).padStart(2,'0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    }
+
+    function setRating(n){
+      const v = Math.max(1, Math.min(5, Number(n) || 3));
+      ratingHidden.value = String(v);
+      ratingValue.textContent = String(v);
+      starButtons.forEach(btn => {
+        const s = Number(btn.getAttribute('data-star'));
+        btn.setAttribute('aria-pressed', String(s <= v));
+      });
+    }
+
+    function showStatus(text, kind='good'){
+      statusBox.style.display = 'block';
+      statusBox.className = `msg ${kind}`;
+      statusBox.textContent = text;
+    }
+
+    function appendLog(entry){
+      logEl.textContent = `${logEl.textContent.trimEnd()}\n\n${entry}`;
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    // Star rating controls
+    starButtons.forEach(btn => {
+      btn.addEventListener('click', () => setRating(btn.getAttribute('data-star')));
+      btn.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setRating(btn.getAttribute('data-star'));
+        }
+      });
+    });
+    setRating(3);
+
+    // Ctrl/Cmd + Enter to submit
+    form.addEventListener('keydown', (e) => {
+      const isMac = navigator.platform.toUpperCase().includes('MAC');
+      if ((isMac ? e.metaKey : e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        form.requestSubmit();
+      }
+    });
+
+    // Inspiration button
+    fillExampleBtn.addEventListener('click', () => {
+      const sample = exampleReviews[Math.floor(Math.random() * exampleReviews.length)];
+      nameEl.value = sample.name;
+      categoryEl.value = sample.category;
+      setRating(sample.rating);
+      reviewEl.value = sample.review;
+      showStatus("Sample loaded. Go ahead and make it weirder.", 'good');
+    });
+
+    resetAllBtn.addEventListener('click', () => {
+      form.reset();
+      setRating(3);
+      showStatus("Form reset. Fresh start. Same outcome.", 'good');
+      reviewEl.focus();
+    });
+
+    // Submit handler: discards immediately by design
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = (nameEl.value || '').trim() || 'Anonymous';
+      const category = categoryEl.value;
+      const rating = Number(ratingHidden.value) || 3;
+      const review = (reviewEl.value || '').trim();
+
+      if(!review){
+        showStatus("Please write something first. Even the void has standards.", 'bad');
+        reviewEl.focus();
+        return;
+      }
+
+      if(!agreeEl.checked){
+        showStatus("Check the box. You must consent to being ignored.", 'bad');
+        agreeEl.focus();
+        return;
+      }
+
+      // Pretend to process, then discard
+      const receipt = snarkyReceipts[Math.floor(Math.random() * snarkyReceipts.length)];
+
+      discardedCount += 1;
+      counterEl.textContent = `${discardedCount} submission${discardedCount === 1 ? '' : 's'} archived`;
+
+      const preview = review.length > 110 ? (review.slice(0, 110) + '…') : review;
+      appendLog([
+        `[${nowStamp()}] SUBMISSION RECEIVED`,
+        `  from: ${name}`,
+        `  category: ${category}`,
+        `  rating: ${'★'.repeat(rating)}${'☆'.repeat(5-rating)} (${rating}/5)`,
+        `  payload: "${preview.replaceAll('\n',' ')}"`,
+        `  action: discarded ✅`,
+        `  note: forwarded to /dev/null (per policy)`
+      ].join('\n'));
+
+      showStatus(receipt, 'good');
+
+      // Clear inputs to reinforce the promise.
+      form.reset();
+      setRating(3);
+      reviewEl.focus();
+
+      // Tiny easter egg message in the console for the curious.
+      console.log("Future Lab Review Void: Thanks! Your review was immediately discarded.");
+    });
+  </script>
+
+
+</body></html>
